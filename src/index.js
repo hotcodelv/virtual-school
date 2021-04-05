@@ -18,31 +18,12 @@ var markerRoot1;
 
 var arToolkitSource, arToolkitContext;
 
-window.addEventListener("resize", onWindowResize, false);
-
-function createSpotlights(scene) {
-  var color = 0xffffff;
-  var intensity = 3;
-  var distance = 15;
-  var angle = Math.PI / 7;
-
-  new Array(6).fill("").forEach((item, i) => {
-    var spotlight = new THREE.SpotLight(color, intensity, distance, angle);
-    var value = i % 2 === 0 ? 15 : -15;
-
-    spotlight.position.set(i < 2 ? value : 0, i >= 2 && i < 4 ? value : 0, i >= 4 ? value : 0);
-    scene.add(spotlight);
-  });
-}
-
 function init() {
-  camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 8000);
-  camera.position.set(0, 0, 90);
+  camera = new THREE.PerspectiveCamera();
   scene = new THREE.Scene();
+  scene.add(camera);
 
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  // renderer.setSize(window.innerWidth, window.innerHeight);
-
   renderer.setClearColor(new THREE.Color("lightgrey"), 0);
   renderer.setSize(640, 480);
   renderer.domElement.style.position = "absolute";
