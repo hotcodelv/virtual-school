@@ -1,5 +1,5 @@
-var ARjs = ARjs || {};
-var THREEx = THREEx || {};
+import * as THREE from "three";
+import { THREEx, ARjs } from "./threex";
 
 ARjs.Source = THREEx.ArToolkitSource = function (parameters) {
   var _this = this;
