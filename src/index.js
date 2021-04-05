@@ -19,12 +19,12 @@ var markerRoot1;
 var arToolkitSource, arToolkitContext;
 
 function init() {
-  camera = new THREE.PerspectiveCamera();
+  camera = new THREE.PerspectiveCamera(145, window.innerWidth / window.innerHeight, 0.1, 180000);
+  camera.position.set(0, 0, 0.01);
   scene = new THREE.Scene();
   scene.add(camera);
 
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setClearColor(new THREE.Color("lightgrey"), 0);
   renderer.setSize(640, 480);
   renderer.domElement.style.position = "absolute";
   renderer.domElement.style.top = "0px";
@@ -82,7 +82,7 @@ function init() {
   let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
   scene.add(ambientLight);
 
-  var sunGeometry = new THREE.SphereGeometry(6, 50, 50);
+  var sunGeometry = new THREE.SphereGeometry(1, 50, 50);
   var sunMaterial = new THREE.MeshPhongMaterial({
     map: loader.load(sunTexture),
     color: 0xf2e8b7,
@@ -104,8 +104,8 @@ function init() {
         name: planet.attachment.name,
         theta: 0,
         dTheta: (2 * Math.PI) / (planet.attachment.period_days * secondsInDay),
-        diameter: planet.attachment.diameter * 0.0001,
-        distance_KM: planet.attachment.distance_KM * 0.0000003,
+        diameter: planet.attachment.diameter / 18000,
+        distance_KM: planet.attachment.distance_KM * 0.00000004,
         inclination: planet.attachment.inclination * (Math.PI / 180),
         rotation: (2 * Math.PI) / (planet.attachment.rotation_days * secondsInDay),
         texture: planet.attachment.texture,
@@ -116,8 +116,8 @@ function init() {
       name: planet.name,
       theta: 0,
       dTheta: (2 * Math.PI) / (planet.period_days * secondsInDay),
-      diameter: planet.diameter * 0.0001,
-      distance_KM: planet.distance_KM * 0.0000003,
+      diameter: planet.diameter / 18000,
+      distance_KM: planet.distance_KM * 0.00000004,
       inclination: planet.inclination * (Math.PI / 180),
       rotation: (2 * Math.PI) / (planet.rotation_days * secondsInDay),
       texture: planet.texture,
