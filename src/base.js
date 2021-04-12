@@ -21,4 +21,4 @@ const distanceScale = 0.00000004;
 const diameterScale = 18000;
 const timeScale = 1000000;
 
-export { camera, scene, renderer, controls, secondsInDay, distanceScale, diameterScale, timeScale };
+export { camera, scene, renderer, secondsInDay, distanceScale, diameterScale, timeScale };
