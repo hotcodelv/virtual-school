@@ -1,72 +1,19 @@
 import * as THREE from "three";
 
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import sunTexture from "./sun.jpg";
+import sunTexture from "./textures/sun.jpg";
 import { planet_data } from "./planets";
 
-import camera_para from "./data/camera_para.dat";
 import pattern from "./data/hiro.patt";
 
 import { THREEx } from "./threex/join";
 
-var camera;
-var scene;
-var renderer;
-var controls;
-var secondsInDay = 87600;
+import { camera, renderer, scene, secondsInDay } from "./base";
+import { arToolkitContext, arToolkitSource } from "./ar";
+
 var markerRoot1;
 
-var arToolkitSource, arToolkitContext;
-
 function init() {
-  camera = new THREE.PerspectiveCamera(145, window.innerWidth / window.innerHeight, 0.1, 180000);
-  camera.position.set(0, 0, 0.01);
-  scene = new THREE.Scene();
-  scene.add(camera);
-
-  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setSize(640, 480);
-  renderer.domElement.style.position = "absolute";
-  renderer.domElement.style.top = "0px";
-  renderer.domElement.style.left = "0px";
-
   const loader = new THREE.TextureLoader();
-
-  arToolkitSource = new THREEx.ArToolkitSource({
-    sourceType: "webcam",
-  });
-
-  function onResize() {
-    arToolkitSource.onResize();
-    arToolkitSource.copySizeTo(renderer.domElement);
-    if (arToolkitContext.arController !== null) {
-      arToolkitSource.copySizeTo(arToolkitContext.arController.canvas);
-    }
-  }
-
-  arToolkitSource.init(function onReady() {
-    onResize();
-  });
-
-  // handle resize event
-  window.addEventListener("resize", function () {
-    onResize();
-  });
-
-  ////////////////////////////////////////////////////////////
-  // setup arToolkitContext
-  ////////////////////////////////////////////////////////////
-
-  // create atToolkitContext
-  arToolkitContext = new THREEx.ArToolkitContext({
-    cameraParametersUrl: camera_para,
-    detectionMode: "mono",
-  });
-
-  // copy projection matrix to camera when initialization complete
-  arToolkitContext.init(function onCompleted() {
-    camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
-  });
 
   markerRoot1 = new THREE.Group();
   scene.add(markerRoot1);
@@ -92,9 +39,6 @@ function init() {
   });
   var sunObject = new THREE.Mesh(sunGeometry, sunMaterial);
   markerRoot1.add(sunObject);
-
-  controls = new OrbitControls(camera, renderer.domElement);
-  controls.update();
 
   var planets = [];
   planet_data.forEach(function (planet) {

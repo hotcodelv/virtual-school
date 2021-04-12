@@ -1,14 +1,13 @@
-import earth from "./globe.jpg";
-import sun from "./sun.jpg";
-import moon from "./moon.jpg";
-import mercury from "./mercury.jpg";
-import venus from "./venus.jpg";
-import mars from "./mars.jpg";
-import jupiter from "./jupiter.jpg";
-import saturn from "./saturn.jpg";
-import uranus from "./uranus.jpg";
-import neptune from "./neptune.jpg";
-import pluto from "./pluto.png";
+import earth from "./textures/globe.jpg";
+import moon from "./textures/moon.jpg";
+import mercury from "./textures/mercury.jpg";
+import venus from "./textures/venus.jpg";
+import mars from "./textures/mars.jpg";
+import jupiter from "./textures/jupiter.jpg";
+import saturn from "./textures/saturn.jpg";
+import uranus from "./textures/uranus.jpg";
+import neptune from "./textures/neptune.jpg";
+import pluto from "./textures/pluto.png";
 
 export const planet_data = [
   {
