@@ -8,7 +8,7 @@ var scene = new THREE.Scene();
 scene.add(camera);
 
 var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-renderer.setSize(640, 480);
+renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.domElement.style.position = "absolute";
 renderer.domElement.style.top = "0px";
 renderer.domElement.style.left = "0px";
