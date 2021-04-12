@@ -39,7 +39,7 @@ export class Planet {
 }
 
 function addAmbientLightTo(solarScene) {
-  let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
+  let ambientLight = new THREE.AmbientLight(0xcccccc, 0.8);
   solarScene.add(ambientLight);
 }
 
