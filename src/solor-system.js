@@ -1,10 +1,10 @@
 import pattern from "./data/hiro.patt";
 import sunTexture from "./textures/sun.jpg";
-import { planet_data } from "./planets";
+import { planet_data } from "./planets_data";
 import * as THREE from "three";
 import { THREEx } from "./threex/join";
 import { arToolkitContext } from "./ar";
-import { diameterScale, distanceScale, scene, secondsInDay, timeScale } from "./base";
+import { diameterScale, distanceScale, secondsInDay, timeScale } from "./base";
 
 const loader = new THREE.TextureLoader();
 
@@ -14,23 +14,22 @@ export class SolarSystem {
   }
 
   build() {
-    let solarScene = new THREE.Group();
-    scene.add(solarScene);
+    let scene = new THREE.Group();
 
-    let markerControls = new THREEx.ArMarkerControls(arToolkitContext, solarScene, {
+    let markerControls = new THREEx.ArMarkerControls(arToolkitContext, scene, {
       type: "pattern",
       patternUrl: pattern,
     });
 
-    addSunLinghtTo(solarScene);
-    addAmbientLightTo(solarScene);
-    addSunTo(solarScene);
+    addSunLinghtTo(scene);
+    addAmbientLightTo(scene);
+    addSunTo(scene);
 
     this.planets = computePlanets();
 
-    addPlanetTrajectories(this.planets, solarScene);
-    addPlanets(this.planets, solarScene);
-    return solarScene;
+    addPlanetTrajectories(this.planets, scene);
+    addPlanets(this.planets, scene);
+    return scene;
   }
 
   animate() {

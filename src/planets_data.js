@@ -8,6 +8,47 @@ import saturn from "./textures/saturn.jpg";
 import uranus from "./textures/uranus.jpg";
 import neptune from "./textures/neptune.jpg";
 import pluto from "./textures/pluto.png";
+import sun from "./textures/sun.jpg";
+
+import patternA from "./data/letterA.patt";
+import patternB from "./data/letterB.patt";
+import patternC from "./data/letterC.patt";
+import patternD from "./data/letterD.patt";
+import patternF from "./data/letterF.patt";
+import patternG from "./data/letterG.patt";
+
+export const qr_planet_data = [
+  {
+    name: "sun",
+    pattern: patternA,
+    texture: sun,
+  },
+  {
+    name: "mercury",
+    pattern: patternB,
+    texture: mercury,
+  },
+  {
+    name: "venus",
+    pattern: patternC,
+    texture: venus,
+  },
+  {
+    name: "earth",
+    pattern: patternD,
+    texture: earth,
+  },
+  {
+    name: "mars",
+    pattern: patternF,
+    texture: mars,
+  },
+  {
+    name: "jupiter",
+    pattern: patternG,
+    texture: jupiter,
+  },
+];
 
 export const planet_data = [
   {
