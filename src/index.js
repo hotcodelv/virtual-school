@@ -18,7 +18,6 @@ function init() {
 
     oneByOnePlanets.push(contex);
   });
-  console.log(oneByOnePlanets);
 
   document.body.appendChild(renderer.domElement);
 
