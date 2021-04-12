@@ -13,8 +13,8 @@ renderer.domElement.style.position = "absolute";
 renderer.domElement.style.top = "0px";
 renderer.domElement.style.left = "0px";
 
-var controls = new OrbitControls(camera, renderer.domElement);
-controls.update();
+// var controls = new OrbitControls(camera, renderer.domElement);
+// controls.update();
 
 const secondsInDay = 87600;
 const distanceScale = 0.00000004;
