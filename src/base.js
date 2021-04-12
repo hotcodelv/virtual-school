@@ -17,5 +17,8 @@ var controls = new OrbitControls(camera, renderer.domElement);
 controls.update();
 
 const secondsInDay = 87600;
+const distanceScale = 0.00000004;
+const diameterScale = 18000;
+const timeScale = 1000000;
 
-export { camera, scene, renderer, controls, secondsInDay };
+export { camera, scene, renderer, controls, secondsInDay, distanceScale, diameterScale, timeScale };
